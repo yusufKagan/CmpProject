@@ -109,11 +109,8 @@ def plot(images_and_boxes):
         axes = [axes]
 
     for ax, (image, boxes) in zip(axes, images_and_boxes):
-        # Display the image
-        ax.imshow(image.permute(1, 2, 0).numpy())  # Assuming PyTorch tensor format (C, H, W)
-        
-        # Draw each bounding box
-        for box in boxes:  # Assuming boxes are in XYXY format
+        ax.imshow(image.permute(1, 2, 0).numpy()) 
+        for box in boxes: 
             x_min, y_min, x_max, y_max = box.numpy()
             width = x_max - x_min
             height = y_max - y_min
@@ -238,17 +235,10 @@ def plot_image(img_tensor, annotation):
    
     fig, ax = plt.subplots(1)
     img = img_tensor.cpu().data
- 
-    # Display the image
     ax.imshow(img.permute(1, 2, 0))
-   
     for box in annotation["boxes"]:
         xmin, ymin, xmax, ymax = box
- 
-        # Create a Rectangle patch
         rect = patches.Rectangle((xmin,ymin),(xmax-xmin),(ymax-ymin),linewidth=1,edgecolor='r',facecolor='none')
- 
-        # Add the patch to the Axes
         ax.add_patch(rect)
  
     plt.show()
