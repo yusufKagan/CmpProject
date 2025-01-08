@@ -1,0 +1,5 @@
+path: second_output_files
+train: images/train
+val: images/val
+nc: 3 
+names: ['mask_weared_incorrect','without_mask','with_mask'] 
