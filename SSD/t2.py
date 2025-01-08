@@ -231,17 +231,13 @@ def plot_image(img_tensor, annotation):
    
     fig, ax = plt.subplots(1)
     img = img_tensor.cpu().data
- 
-    # Display the image
     ax.imshow(img.permute(1, 2, 0))
    
     for box in annotation["boxes"]:
         xmin, ymin, xmax, ymax = box
  
-        # Create a Rectangle patch
         rect = patches.Rectangle((xmin,ymin),(xmax-xmin),(ymax-ymin),linewidth=1,edgecolor='r',facecolor='none')
  
-        # Add the patch to the Axes
         ax.add_patch(rect)
  
     plt.show()
